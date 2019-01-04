@@ -11,31 +11,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/*eslint-disable no-unused-params */
 'use strict';
 
 const express = require('express');
 const path = require("path");
 const app = express();
 
-
-//Routes
 app.get('/', (req,res) =>{ 
      res.sendFile(path.join(__dirname+'/index.html'));
 });
-app.get('/ga', (req,res) =>{ 
-     res.sendFile(path.join(__dirname+'/index.html'));
-});
-app.get('/email', (req,res) =>{ 
-     res.sendFile(path.join(__dirname+'/index.html'));
-	 
 app.use(express.static(__dirname));
 
 if (module === require.main) {
+  // [START server]
   // Start the server
   const server = app.listen(process.env.PORT || 8080, () => {
     const port = server.address().port;
     console.log(`App listening on port ${port}`);
   });
+  // [END server]
 }
+
 module.exports = app;
